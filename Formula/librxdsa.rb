@@ -7,7 +7,7 @@ class Librxdsa < Formula
 
   def install
     system "make"
-    lib.install "libdsa.a"
+    lib.install "librxdsa.a"
     include.install Dir["include/*.h"]
   end
 end
