@@ -2,7 +2,8 @@ class Librxdsa < Formula
   desc "Lightweight C algorithms library"
   homepage "https://github.com/rookie2373/librxdsa"
   url "https://github.com/rookie2373/librxdsa/archive/refs/tags/D2026.1.2.tar.gz"
-  sha256 "b364efbae1e7c4ffda50085f3c81254a78b5b6b70885eefe43525e570768a81a"
+  version "D2026.1.2"
+  sha256 "2445442f0e392150528e33a5c5eb2ca5ef3695a3ed760289d8c1a77bf53ef257"
   license "GPL-3.0-or-later"
 
   def install
