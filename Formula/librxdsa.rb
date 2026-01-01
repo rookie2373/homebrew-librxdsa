@@ -3,7 +3,7 @@ class Librxdsa < Formula
   homepage "https://github.com/rookie2373/librxdsa"
   url "https://github.com/rookie2373/librxdsa/archive/refs/tags/D2026.1.2.tar.gz"
   version "D2026.1.2"
-  sha256 "2445442f0e392150528e33a5c5eb2ca5ef3695a3ed760289d8c1a77bf53ef257"
+  sha256 "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed"
   license "GPL-3.0-or-later"
 
   def install
