@@ -5,7 +5,7 @@ class Librxdsa < Formula
   version "R2026.2.7.1"
   sha256 "f6db3ced9151d3e8449c13aeaf676ffc33d973d3e2f30133c1a59957a2671c2e"
   license "GPL-3.0-or-later"
-  revision 6
+  revision 5
 
   def install
     system "make"
