@@ -3,8 +3,8 @@ class Librxdsa < Formula
   homepage "https://github.com/rookie2373/librxdsa"
   url "https://github.com/rookie2373/librxdsa/archive/refs/tags/R2026.2.7.1.tar.gz"
   version "R2026.2.7.1"
-  revision 3
   sha256 "f6db3ced9151d3e8449c13aeaf676ffc33d973d3e2f30133c1a59957a2671c2e"
+  revision 4
   license "GPL-3.0-or-later"
 
   def install
