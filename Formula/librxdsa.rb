@@ -1,10 +1,10 @@
 class Librxdsa < Formula
-  desc "A standalone and lightweight C algorithms library"
+  desc "Standalone and lightweight C algorithms library"
   homepage "https://github.com/rookie2373/librxdsa"
   head "https://github.com/rookie2373/librxdsa.git", branch: "master"
   url "https://github.com/rookie2373/librxdsa/archive/refs/tags/R2026.2.7.1.tar.gz"
   version "R2026.2.7.1"
-  revision 1
+  revision 2
   sha256 "f6db3ced9151d3e8449c13aeaf676ffc33d973d3e2f30133c1a59957a2671c2e"
   license "GPL-3.0-or-later"
 
