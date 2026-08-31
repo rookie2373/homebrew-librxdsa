@@ -1,16 +1,14 @@
 class Librxdsa < Formula
   desc "Standalone and lightweight C algorithms library"
   homepage "https://github.com/rookie2373/librxdsa"
-  url "https://github.com/rookie2373/librxdsa/archive/refs/tags/R2026.2.7.1.tar.gz"
-  version "R2026.2.7.1"
-  sha256 "f6db3ced9151d3e8449c13aeaf676ffc33d973d3e2f30133c1a59957a2671c2e"
-  revision 4
+  url "https://github.com/rookie2373/librxdsa/archive/refs/tags/0.0.2.tar.gz"
+  sha256 "d1e6436ab6ba2135da101d19f8f58bd39ee9f822f63fe2199f1a662b09c896fd"
   license "GPL-3.0-or-later"
 
   def install
     system "make"
     lib.install "librxdsa.a"
-    include.install Dir["include/*.h"]
+    include.install Dir["#{buildpath}/include/*.h"]
   end
 
   def caveats
@@ -20,8 +18,17 @@ class Librxdsa < Formula
     EOS
   end
 
-  livecheck do
-    url :stable
-    strategy :github_latest
+  test do
+    (testpath/"test.c").write <<~EOS
+      #include <librxdsa.h>
+      int main() {
+          hello_world();
+          return 0;
+      }
+    EOS
+
+    system ENV.cc, "test.c", "-I#{include}", "-L#{lib}", "-lrxdsa", "-o", "test-app"
+
+    system "./test-app"
   end
 end
