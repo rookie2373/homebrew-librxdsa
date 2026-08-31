@@ -1,16 +1,15 @@
 class Librxdsa < Formula
   desc "Standalone and lightweight C algorithms library"
   homepage "https://github.com/rookie2373/librxdsa"
-  url "https://github.com/rookie2373/librxdsa/archive/refs/tags/R2026.2.7.1.tar.gz"
-  version "R2026.2.7.1"
-  sha256 "f6db3ced9151d3e8449c13aeaf676ffc33d973d3e2f30133c1a59957a2671c2e"
+  url "https://github.com/rookie2373/librxdsa/archive/refs/tags/0.0.2.zip"
+  version "0.0.2"
+  sha256 "9d70dde012de1969b647d073f90bcbfc8a025fbdc1b55c08d6744db7409309d6"
   license "GPL-3.0-or-later"
-  revision 5
 
   def install
     system "make"
     lib.install "librxdsa.a"
-    include.install Dir["include/*.h"]
+    include.install Dir["#{buildpath}/include/*.h"]
   end
 
   def caveats
@@ -18,5 +17,19 @@ class Librxdsa < Formula
       This library provides C algorithms. Include the header files and link with:
         -I#{include} -L#{lib} -lrxdsa
     EOS
+  end
+
+  test do
+    (testpath/"test.c").write <<~EOS
+      #include <librxdsa.h>
+      int main() {
+          hello_world();
+          return 0;
+      }
+    EOS
+
+    system ENV.cc, "test.c", "-I#{include}", "-L#{lib}", "-lrxdsa", "-o", "test-app"
+
+    system "./test-app"
   end
 end
