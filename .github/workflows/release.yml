@@ -1,0 +1,41 @@
+name: Deploy Homebrew Formula
+
+on:
+  repository_dispatch:
+    types: [update_formula]
+
+jobs:
+  update-formula:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Homebrew Tap
+        uses: actions/checkout@v4
+
+      - name: Update Formula
+        run: |
+          VERSION="${{ github.event.client_payload.version }}"
+          URL="${{ github.event.client_payload.url }}"
+          SHA256="${{ github.event.client_payload.sha256 }}"
+          
+          FORMULA_FILE="Formula/librxdsa.rb"
+          
+          echo "Updating $FORMULA_FILE to version $VERSION..."
+
+          sed -i -E "s|(url\s+\")[^\"]+(\")|\1${URL}\2|g" "$FORMULA_FILE"
+          sed -i -E "s|(sha256\s+\")[^\"]+(\")|\1${SHA256}\2|g" "$FORMULA_FILE"
+
+      - name: Push to 'main' branch
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@://github.com"
+          
+          git add .
+          
+          if git diff-index --quiet HEAD; then
+            echo "No changes detected in the formula file."
+          else
+            git commit -m "Update formula to version ${{ github.event.client_payload.version }}"
+            git push origin HEAD
+          fi
