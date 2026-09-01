@@ -6,6 +6,8 @@ class Librxdsa < Formula
   license "GPL-3.0-or-later"
 
   def install
+    Dir.chdir(version.to_s) if Dir.exist?(version.to_s)
+    
     system "make"
     lib.install "librxdsa.a"
     include.install Dir["#{buildpath}/include/*.h"]
