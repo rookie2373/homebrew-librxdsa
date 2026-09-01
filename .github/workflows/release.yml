@@ -1,4 +1,4 @@
-name: Deploy Homebrew Formula
+name: Brew Release
 
 on:
   repository_dispatch:
@@ -6,6 +6,7 @@ on:
 
 jobs:
   update-formula:
+    name: Brew Tag ${{ github.ref_name }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -26,10 +27,12 @@ jobs:
           sed -i -E "s|(url\s+\")[^\"]+(\")|\1${URL}\2|g" "$FORMULA_FILE"
           sed -i -E "s|(sha256\s+\")[^\"]+(\")|\1${SHA256}\2|g" "$FORMULA_FILE"
 
-      - name: Push to 'main' branch
+      - name: Push to 'release' branch
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git checkout release
           
           git add .
           
