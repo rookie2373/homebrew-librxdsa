@@ -1,8 +1,8 @@
 class Librxdsa < Formula
   desc "Standalone and lightweight C algorithms library"
   homepage "https://github.com/rookie2373/librxdsa"
-  url "https://github.com/rookie2373/librxdsa/releases/download/0.0.12/0.0.12.tar.gz"
-  sha256 "eaab03e4ff1663d51e4d1ab223322ec2dc2040f2cb0e0caa2bdff9ff6c237125"
+  url "https://github.com/rookie2373/librxdsa/releases/download/0.0.13/0.0.13.tar.gz"
+  sha256 "500e5b7d29c9170ec8ad2fb4c613b23b0c0154fa912c680c2e42117db4292557"
   license "GPL-3.0-or-later"
 
   def install
